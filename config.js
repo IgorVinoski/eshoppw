@@ -12,10 +12,13 @@ if (isProduction) {
 } else {
   pool = new Pool({
     user: 'postgres',
-    host: 'localhost',
-    database: 'eshoppw',
-    password: 'postgres',
-    port: 5432
+    host: 'stiltedly-sharp-garganey.data-1.use1.tembo.io',
+    database: 'postgres',
+    password: '6uey1amfdkSZ7O7j',
+    port: 5432,
+    ssl: {
+      rejectUnauthorized: false,
+    }
   })
 }
 

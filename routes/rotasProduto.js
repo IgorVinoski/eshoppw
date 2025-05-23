@@ -1,19 +1,18 @@
 const { Router } = require('express');
 
-const { getProdutos, addProduto, updateProduto, 
-    deleteProduto, getProdutoPorCodigo } = require('../controllers/produtoController');
+const {  getProdutos, addProduto, updateProduto, deleteProduto, getProdutoPorCodigo } = require('../controllers/produtoController');
 
-const { verificaJWT } = require('../controllers/segurancaController')
+const { verificarJWT } = require('../controllers/segurancaController');
 
-const rotasProdutos =  new Router();
+const rotasProdutos = new Router();
 
 rotasProdutos.route('/produto')
-               .get(verificaJWT,getProdutos)
-               .post(verificaJWT,addProduto)
-               .put(verificaJWT,updateProduto);
+   .get(getProdutos)
+   .post(verificarJWT, addProduto)
+   .put(verificarJWT, updateProduto)
 
 rotasProdutos.route('/produto/:codigo')
-               .delete(verificaJWT,deleteProduto)
-               .get(verificaJWT,getProdutoPorCodigo)
+   .get(verificarJWT, getProdutoPorCodigo)
+   .delete(verificarJWT, deleteProduto)
 
 module.exports = { rotasProdutos };
